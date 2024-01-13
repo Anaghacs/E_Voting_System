@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import authenticate,login
 
 # Create your views here.
 
@@ -25,16 +26,28 @@ def signup(request):
 
         messages.success(request,"Your Account has been successfully created")
 
-        status=['status']
+        # status=['status']
 
-        return redirect('signin')
+        return redirect('login')
 
     return render(request,'signup.html')
 
 def signin(request):
+
     return render(request,'signin.html')
 
-def login(request):
+def signin(request):
+
+    if request.method=='POST':
+        username=request.POST['username']
+        pass1=request.POST['password1']
+
+        user=authenticate(username=username,pasword=pass1)
+
+        if user is not None:
+            login(request,user)
+
+
     return render(request,'login.html')
 
 def signout(request):
