@@ -1,0 +1,85 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign_Up</title>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <form action="/signup" method="post">
+        {% csrf_token %}
+        <label for="">Username</label>
+        <input type="text" id="username" name="username" placeholder="Create a username(only letters)" required><br><br>
+
+        <label for="">First Name</label>
+        <input type="text" id="first_name" name="first_name" placeholder="Enter your first name" required><br><br>
+
+        <label for="">Last Name</label>
+        <input type="text" id="last_name" name="last_name" placeholder="Enter your last name" required><br><br>
+
+        <label for="">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
+
+        <label for="">Password</label>
+        <input type="password" id="password1" name="password1" placeholder="Create a password" required><br><br>
+
+        <label for="">Confirm your password</label>
+        <input type="password" id="password2" name="password2" placeholder="Confirm your password" required><br><br>
+        
+        <button type="submit">Sign Up</button>
+    </form>
+</body>
+</html> -->
+
+
+<!--
+Author: Colorlib
+Author URL: https://colorlib.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Creative Colorlib SignUp Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<!-- //web font -->
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'sign_up.css' %}">
+<body>
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h1>Creative SignUp Form</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="/signup" method="post">
+					<input class="text" type="text" name="username" placeholder="Username" required=""><br>
+                    <input class="text" type="text" name="first_name" placeholder="First Name" required=""><br>
+                    <input class="text" type="text" name="last_name" placeholder="Last Name" required="">
+					<input class="text email" type="email" name="email" placeholder="Email" required="">
+					<input class="text" type="password" name="password1" placeholder="Password" required="">
+					<input class="text w3lpass" type="password" name="password2" placeholder="Confirm Password" required="">
+					<div class="wthree-text">
+						<label class="anim">
+							<input type="checkbox" class="checkbox" required="">
+							<span>I Agree To The Terms & Conditions</span>
+						</label>
+						<div class="clear"> </div>
+					</div>
+					<input type="submit" value="SIGNUP">
+				</form>
+				<p>Don't have an Account? <a href="/login"> Login Now!</a></p>
+			</div>
+		</div>	
+	</div>
+</body>
+</html>
