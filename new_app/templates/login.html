@@ -10,11 +10,12 @@
 <body>
     <div class="login-page">
         <div class="form">
-          <form class="login-form" action="/admin_home" method="post">
+
+          <form class="login-form" action="" method="post">
             {% csrf_token %}
             <input type="text" name="username" placeholder="username" required/>
             <input type="password" name="password1" placeholder="password" required/>
-            <button>login</button>
+            <button type="submit" value="submit" >Login</button>
             <p class="message">Not registered? <a href="/signup">Create an account</a></p>
           </form>
         </div>
