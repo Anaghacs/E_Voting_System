@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 # from django.auth import User
 # Create your models here.
 # class Users(models.Model):
@@ -8,3 +9,4 @@ from django.db import models
 #     password=models.CharField(max_length=20)
 #     confirm_password=models.CharField(max_length=20)
 #     status=models.BooleanField(default=False)
+

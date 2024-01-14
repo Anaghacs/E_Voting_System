@@ -6,6 +6,7 @@ urlpatterns=[
     path('signin',views.signin,name="signin"),
     path('signout',views.signout,name="signout"),
     path('login',views.login,name="login"),
+    path('admin_home',views.admin_home,name="admin_home")
 
 
     # path('vote',views.vote,name="vote"),
