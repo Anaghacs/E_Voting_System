@@ -7,27 +7,30 @@
 </head>
 
 {% load static %}
-<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="{% static 'user.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"><body>
     <div class="container">
+        <h1>User Details</h1>
         <table id="customers" border="1">
             <thead>
-                <th>No</th>
+                <!-- <th> No</th> -->
+                <th> User Name</th>
                 <th> First Name</th>
                 <th> Last Name</th>
-                <th>Email Address</th>
-                <th>Phone No</th>
-                <th>Place</th>
+                <th> Email Address</th>                
+                <th> Status</th>
                 <th colspan="2" id="mid">Action</th>
             </thead>
             {% for i in user %}
             <tr>
-                <td>{{i.id}}</td>
+                <!-- <td>{{i.id}}</td> -->
+                <td>{{i.username}}</td>
                 <td>{{i.first_name}}</td>
                 <td>{{i.last_name}}</td>
-                <td>{{i.email_address}}</td>
-                <td>{{i.phone_no}}</td>
-                <td>{{i.place}}</td>
+                <td>{{i.email}}</td>
+                <td>
+                    <a href="approve/{{i.id}}">pending</a>
+                </td>
                 <td>
                     <a href="update/{{i.id}}"><i class="fas fa-edit"></i></a>                    
                 </td>
@@ -38,8 +41,6 @@
             </tr>
             {% endfor %}
         </table>
-        <br><br>
-        <a href="{% url 'add' %}"><button id="new3">Add Users</button></a><br><br>   
     </div>
     </div>  
     

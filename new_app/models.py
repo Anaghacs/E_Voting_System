@@ -10,3 +10,5 @@ from django.contrib.auth.models import AbstractUser
 #     confirm_password=models.CharField(max_length=20)
 #     status=models.BooleanField(default=False)
 
+# class CustomUser(AbstractUser):
+#     is_approved=models.BooleanField(default=False)

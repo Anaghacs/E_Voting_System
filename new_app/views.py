@@ -28,18 +28,16 @@ def signup(request):
 
         messages.success(request,"Your Account has been successfully created")
 
-        # status=['status']
-        
-
         return redirect('login')
     return render(request,'signup.html')
 
 def signin(request):
 
-    return render(request,'base.html')
+    return
+    render(request,'base.html')
 
 def login(request):
-
+    
     if request.method=='POST':
         username=request.POST['username']
         pass1=request.POST['password1']
@@ -48,20 +46,27 @@ def login(request):
 
         if user is not None:
             login(request,user)
-        
+
         else:
             messages.error(request,"Bad Credential")
             fname=user.first_name
             return redirect(request,'admin_home.html',{'fname':fname})
-
+    
     return render(request,'login.html')
 
 def signout(request):
-
     logout(request)
-    return redirect('base')
-    # pass
-    # return render(request,'signo.html')
+    messages.success(request,"Logged Out Successfully!")
+    return redirect("base")
 
 def admin_home(request):
     return render(request,'admin_home.html')
+
+def view_users(request):
+    user=User.objects.filter(is_staff=False)
+    return render(request,'view_users.html',{'user':user})
+
+def delete(request,id):
+    user=User.objects.get(id=id)
+    user.delete()
+    return redirect("view_users")
