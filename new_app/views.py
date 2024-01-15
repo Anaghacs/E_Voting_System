@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages,auth
 from django.contrib.auth import authenticate,login
 from django.contrib.auth import logout
+from .models import Position,Candidate
 
 
 # Create your views here.
@@ -108,5 +109,6 @@ def user_view_user(request,id):
     user=User.objects.get(id=id)
     return render(request,'user_view_users.html',{'user':user})
 
-# def candidate_form(request):
+def candidate_form(request):
+    return render(request,'candidate_form.html')
 
