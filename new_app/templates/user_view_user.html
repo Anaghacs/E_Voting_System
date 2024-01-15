@@ -19,21 +19,24 @@
                 <th> Last Name</th>
                 <th> Email Address</th>                
                 <th> Status</th>
-                <th colspan="2" id="mid">Action</th>
+                <!-- <th colspan="2" id="mid">Action</th> -->
             </thead>
             {% for i in user %}
             <tr>
-                <!-- <td>{{i.id}}</td> -->
+                <td>{{i.id}}</td>
                 <td>{{i.username}}</td>
                 <td>{{i.first_name}}</td>
                 <td>{{i.last_name}}</td>
                 <td>{{i.email}}</td>
                 <td>
-                    {% if not user.is_staff %}
+                    <!-- {% if not user.is_staff %}
                         <a href="approve/{{i.id}}">Approve</a>
                     {% else %}
                         <p>Approved</p>
-                    {% endif %}
+                    {% endif %} -->
+                    <td>
+                        <p>Approved</p>
+                    </td>
                 </td>
                 <td>
                     <a href="update/{{i.id}}"><i class="fas fa-edit"></i></a>                    
@@ -42,6 +45,7 @@
                     <a href="delete/{{i.id}}"><i class="fa-solid fa-trash"></i></a>
                 </td>       
             </tr>
+            
             {% endfor %}
         </table>
     </div>

@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="{% static 'user.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"><body>
     <div class="container">
-        <h1>User Details</h1>
+        <h1>Verified User Details</h1>
         <table id="customers" border="1">
             <thead>
                 <!-- <th> No</th> -->
@@ -19,7 +19,7 @@
                 <th> Last Name</th>
                 <th> Email Address</th>                
                 <th> Status</th>
-                <th colspan="2" id="mid">Action</th>
+                <!-- <th colspan="2" id="mid">Action</th> -->
             </thead>
             {% for i in user %}
             <tr>
@@ -29,18 +29,9 @@
                 <td>{{i.last_name}}</td>
                 <td>{{i.email}}</td>
                 <td>
-                    {% if not user.is_staff %}
-                        <a href="approve/{{i.id}}">Approve</a>
-                    {% else %}
-                        <p>Approved</p>
-                    {% endif %}
+                    <p>Approved</p>
                 </td>
-                <td>
-                    <a href="update/{{i.id}}"><i class="fas fa-edit"></i></a>                    
-                </td>
-                <td>
-                    <a href="delete/{{i.id}}"><i class="fa-solid fa-trash"></i></a>
-                </td>       
+                
             </tr>
             {% endfor %}
         </table>

@@ -44,27 +44,24 @@ def signin(request):
     render(request,'base.html')
 
 def login(request):
-    # print("hello")
     if request.method=='POST':
         username=request.POST['username']
         pass1=request.POST['password1']
-        # print("username--------------------------------------------------------",username)
-        # print(pass1)
 
         user=auth.authenticate(request,username=username,password=pass1)
 
         if user is not None:
-            # print("user**************************")
+
             auth.login(request,user)
+
             if user.is_superuser:
-                # print("admin")
                 return render(request,'admin_home.html')
             else:
-                # print("user")
-                return render(request,'user_home.html')
+                # if user.is_staff==True:
+                    return render(request,'user_home.html')
+                # else:
+                    # messages.error(request,"Your account not approved! Please wait an see!")
         else:
-
-            # print("no user111111111111111111")
             messages.error(request,"Invalid login credentials")
             return redirect('login')
         
@@ -101,4 +98,15 @@ def approve(request,id):
     user=User.objects.get(id=id)
     user.is_staff=True
     user.save()
-    return redirect("view_users")
+    return redirect("verified_users")
+
+def verified_users(request):
+    user=User.objects.filter(is_staff=True,is_superuser=False)
+    return render(request,'verified_users.html',{'user':user})
+
+def user_view_user(request,id):
+    user=User.objects.get(id=id)
+    return render(request,'user_view_users.html',{'user':user})
+
+# def candidate_form(request):
+
