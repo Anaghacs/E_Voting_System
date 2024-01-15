@@ -10,7 +10,8 @@ urlpatterns=[
     path('admin_home',views.admin_home,name="admin_home"),
     path('user_home',views.user_home,name="user_home"),
     path('view_users',views.view_users,name="views_users"),
-    path('delete/<int:id>/',views.delete,name="delete")
+    path('delete/<int:id>/',views.delete,name="delete"),
+    path('approve/<int:id>/',views.approve,name="approve")
 
     # path('vote',views.vote,name="vote"),
 

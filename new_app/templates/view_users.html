@@ -29,7 +29,8 @@
                 <td>{{i.last_name}}</td>
                 <td>{{i.email}}</td>
                 <td>
-                    <a href="approve/{{i.id}}">pending</a>
+                    {% if not user.is_staff %}
+                    <a href="approve/{{i.id}}">Approve</a>
                 </td>
                 <td>
                     <a href="update/{{i.id}}"><i class="fas fa-edit"></i></a>                    

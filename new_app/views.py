@@ -96,3 +96,9 @@ def delete(request,id):
 def update(request,id):
     user=User.objects.get(id=id)
     return render(request,'update.html',{'user':user})
+
+def approve(request,id):
+    user=User.objects.get(id=id)
+    user.is_staff=True
+    user.save()
+    return redirect("view_users")
