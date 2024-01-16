@@ -101,6 +101,7 @@ def approve(request,id):
     user.save()
     return redirect("verified_users")
 
+
 def verified_users(request):
     user=User.objects.filter(is_staff=True,is_superuser=False)
     return render(request,'verified_users.html',{'user':user})
