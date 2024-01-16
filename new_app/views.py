@@ -8,9 +8,12 @@ from .models import Position,Candidate
 
 # Create your views here.
 
+
+#Create basic home page function is 'index'.
 def index(request):
     return render(request,'base.html')
 
+#Create User registration form.add the details for models
 def signup(request):
 
     if request.method=="POST":
@@ -21,9 +24,14 @@ def signup(request):
         password=request.POST['password1']
         confirm_password=request.POST['password2']
 
+        # The 'User' is already created database in django.'User' is in-build database.
         if User.objects.filter(username=username):
+
+            # error_message="Username already exit! please try some other." 
             messages.error(request,"Username already exist! Please try some other username")
             return redirect('base')
+        
+        # Verify or validate the password1 and confirm password.Password not e
         if password !=confirm_password:
             messages.error(request,"Password didn't match !")
             return redirect('base')
@@ -132,4 +140,29 @@ def admin_candidate_view(request):
 
 def user_view_candidates(request):
     candidate=Candidate.objects.all()
-    return render(request,'admin_view_candidates.html',{'candidate':candidate})
+    return render(request,'user_view_candidates.html',{'candidate':candidate})
+
+def deletes(request,id):
+    candidate=Candidate.objects.get(id=id)
+    candidate.delete()
+    return redirect("admin_candidate_view")
+
+def updates(request,id):
+    candidate=Candidate.objects.get(id=id)
+    return render(request,'candidate_updation.html',{'candidate':candidate})
+
+def candidate_updation(request,id):
+    if request.method=='POST':
+        fullname=request.POST['fullname']
+        bio=request.POST['bio']
+        photo=request.POST['file']
+        candidates=Candidate.objects.create(fullname=fullname,bio=bio,photo=photo)
+        candidates=Candidate.objects.get(id=id)
+        candidates.save()
+    # return redirect("/")
+    return render(request,'admin_candidate_view.html',{'candidates':candidates})
+
+
+    
+
+
