@@ -48,7 +48,6 @@ def login(request):
     if request.method=='POST':
         username=request.POST['username']
         pass1=request.POST['password1']
-
         user=auth.authenticate(request,username=username,password=pass1)
 
         if user is not None:
@@ -56,17 +55,23 @@ def login(request):
             auth.login(request,user)
 
             if user.is_superuser:
+                # error_message=None
                 return render(request,'admin_home.html')
             else:
                 # if user.is_staff==True:
+                    # error_message=None
                     return render(request,'user_home.html')
                 # else:
+                    # error_message = "Invalid form submission. Please correct the errors below."
                     # messages.error(request,"Your account not approved! Please wait an see!")
         else:
+            # error_message="Invalid username or password please cross check"
             messages.error(request,"Invalid login credentials")
             return redirect('login')
         
+    # return render(request,'login.html',{'error_message':error_message})
     return render(request,'login.html')
+
 
 def signout(request):
     logout(request)
@@ -108,15 +113,23 @@ def verified_users(request):
 
 def user_view_user(request,id):
     user=User.objects.get(id=id)
-    return render(request,'user_view_users.html',{'user':user})
+    users=user.objects.filter(blog=user)
+    # user=User.objects.filter(is_staff=False)
+    return render(request,'user_view_users.html',{'user':users})
 
 def candidate_form(request):
     if request.method=='POST':
         fullname=request.POST['fullname']
         bio=request.POST['bio']
         photo=request.POST['file']
-        candidates=Candidate(fullname=fullname,bio=bio,photo=photo)
+        candidates=Candidate.objects.create(fullname=fullname,bio=bio,photo=photo)
         candidates.save()
-    # return redirect("/")
     return render(request,'candidate_form.html')
 
+def admin_candidate_view(request):
+    candidates=Candidate.objects.all()
+    return render(request,'admin_candidate_view.html',{'candidates':candidates})
+
+def user_view_candidates(request):
+    candidate=Candidate.objects.all()
+    return render(request,'admin_view_candidates.html',{'candidate':candidate})

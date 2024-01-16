@@ -13,8 +13,11 @@ urlpatterns=[
     path('delete/<int:id>/',views.delete,name="delete"),
     path('approve/<int:id>/',views.approve,name="approve"),
     path('verified_users',views.verified_users,name="verified_users"),
-    path('candidate_form',views.candidate_form,name="candidate_form")
+    path('candidate_form',views.candidate_form,name="candidate_form"),
+    path('admin_candidate_view',views.admin_candidate_view,name="admin_candidate_view"),
+    path('user_view_candidates',views.user_view_candidates,name="user_view_candidates")
     # path('user_view_user/<int:id>/',views.user_view_user,name="user_view_user")
+    # path('view_users',views.view_users,name="views_users"),
 
 
     # path('vote',views.vote,name="vote"),

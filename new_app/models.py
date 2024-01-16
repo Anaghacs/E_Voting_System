@@ -18,15 +18,15 @@ class Position(models.Model):
     max_vote=models.IntegerField()
     priority=models.IntegerField()
 
-    def __str__(self):
+    # def __str__(self):
 
-        return self.name
+    #     return self.name
 
 class Candidate(models.Model):
     fullname=models.CharField(max_length=50)
     bio=models.TextField()
     photo=models.ImageField(upload_to="candidates")
-    position=models.ForeignKey(Position,on_delete=models.CASCADE)
+    # position=models.ForeignKey(Position,on_delete=models.CASCADE)
 
     # def __str__(self):
     #     return self.fullname
