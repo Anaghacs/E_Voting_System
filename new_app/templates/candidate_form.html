@@ -1,5 +1,5 @@
 <!-- <!DOCTYPE html>
-<html lang="en">
+<!-- <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,7 @@
         <button type="submit">Sign Up</button>
     </form>
 </body>
-</html> -->
+</html> --> -->
 
 
 <!--
@@ -42,7 +42,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>SignUp Form</title>
+<title>Candidate SignUp Form</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -61,14 +61,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<h1>Creative Candidate Signup Form</h1>
 		<div class="main-agileinfo">
 			<div class="agileits-top">
-				<form action="/signup" method="post">
+				<form action="/candidate_form" method="post">
                     {% csrf_token %}
-					<input class="text" type="text" name="username" placeholder="Username" required=""><br>
-                    <input class="text" type="text" name="first_name" placeholder="First Name" required=""><br>
-                    <input class="text" type="text" name="last_name" placeholder="Last Name" required="">
-					<input class="text email" type="email" name="email" placeholder="Email" required="">
-					<input class="text" type="password" name="password1" placeholder="Password" required="">
-					<input class="text w3lpass" type="password" name="password2" placeholder="Confirm Password" required="">
+					<input class="text" type="text" name="fullname" placeholder="fullname" required=""><br>
+                    <input class="text" type="text" name="bio" placeholder="Bio" required=""><br>
+                    <label class="txt">Upload candidate photo</label><input class="text" type="file" name="file" required="">
+                    <!-- <input class="text" type="text" name="position" placeholder="Bio" required=""><br> -->
+
 					<div class="wthree-text">
 						<!-- <label class="anim">
 							<input type="checkbox" class="checkbox" required="">
@@ -76,9 +75,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</label> -->
 						<div class="clear"> </div>
 					</div>
-					<input type="submit" value="SIGNUP">
+					<input type="submit" value="REGISTRATION">
 				</form>
-				<!-- <p>Don't have an Account? <a href="/login"> Login Now!</a></p> -->
 			</div>
 		</div>	
 	</div>

@@ -110,5 +110,12 @@ def user_view_user(request,id):
     return render(request,'user_view_users.html',{'user':user})
 
 def candidate_form(request):
+    if request.method=='POST':
+        fullname=request.POST['fullname']
+        bio=request.POST['bio']
+        photo=request.POST['file']
+        candidates=Candidate(fullname=fullname,bio=bio,photo=photo)
+        candidates.save()
+    # return redirect("/")
     return render(request,'candidate_form.html')
 

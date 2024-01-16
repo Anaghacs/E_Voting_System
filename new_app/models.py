@@ -28,5 +28,5 @@ class Candidate(models.Model):
     photo=models.ImageField(upload_to="candidates")
     position=models.ForeignKey(Position,on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.fullname
+    # def __str__(self):
+    #     return self.fullname
